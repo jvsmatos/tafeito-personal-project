@@ -14,7 +14,9 @@
     --first-color-hover: #001D3D;
     
     --second-color: #FFD60A;
-    --third-color: #D9D9D9;
+    --third-color: #E0A500;
+    --fourth-color:#000814;
+    --fith-color: #E7E7E7;
     --first-shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -92,8 +94,8 @@ nav{
     width: 100%;
     height: 90px;
     line-height: 90px;
-    background: #BBB;
-    padding-inline: 9vw;
+    background: #E7E7E7;
+    padding-inline: 10vw;
     transition: .3s;
     z-index: 100;
 }
@@ -138,13 +140,13 @@ nav{
     text-decoration: none;
     color: var(--first-color);
     font-weight: 500;
-    padding-inline: 15px;
+    padding-inline: 0px;
     margin-inline: 20px;
     transition: transform 0.3s ease-in-out, color 0.3s ease;;
 }
 
 .nav-link:hover{
-    color: var(--color-white);
+    color: var(--third-color);
 }
 
 .nav-menu-btn{
@@ -154,7 +156,6 @@ nav{
 .nav-menu-btn i{
     font-size: 28px;
     cursor: pointer;
-    color: var(--color-white);;
     transition: transform 0.3s ease-in-out, color 0.3s ease;
 }
 
@@ -165,17 +166,17 @@ nav{
 
 /* ------ CONTAINER ----- */
 .wrapper{
-    padding-inline: 10vw;
-    background: var(--firs);
-    height: 150vh;
+    min-height: 200vh;
+    background: var(--fith-color);
 }
 
 .featured-box{
+    padding-inline: 10vw;
     position: relative;
     display: flex;
-    height: 100vh;
     background: var(--first-color);
-    min-height: 700px;
+    min-height: 500px;
+    flex-wrap: wrap;
 }
 
 .featured-text{
@@ -183,28 +184,45 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
     flex-direction: column;
+    min-height: 68vh;
     width: 40%;
-    padding-left:20px;
-    border: 0px solid black;
+    padding:20px;
+    order: 1;
+    text-align: center;
 }
 
 .featured-name{
-    font-size: 40px;
-    font-weight: 500;
+    font-size: 30px;
     color: var(--color-white);
-    margin-block: 20px;
+    border: 0px solid;
+    min-height: 100px;
 }
 
-.typedText{
+#typed{
+    margin-block: 18px;
     text-transform: uppercase;
+}
+
+.color1{
     color: var(--second-color);
+    font-weight: bold;
+}
+.color2{
+    color: red;
+    font-weight: bold;
+}
+.color3{
+    color: rgb(6, 216, 6);
+    font-weight: bold;
+}
+.color4{
+    color: #0fd3ec;
     font-weight: bold;
 }
 
 .featured-text-info{
-    font-size: 15px;
+    font-size: 14px;
     margin-bottom: 30px;
     color: var(--color-white);
 }
@@ -216,14 +234,14 @@ nav{
 
 .featured-image{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-content: center;
-    min-height: 80vh;
     width: 60%;
+    order: 2;
 }
 
 .image{
-    margin: auto 0;
+    margin: auto;
     overflow: hidden;
     border-radius: 20% 3% 20% 3%;
     max-width: 100%;
@@ -232,13 +250,26 @@ nav{
 .image img{
     width: 100%;
     height: auto;
-    max-width: 950px;
+    max-width: 500px;
     object-fit: cover;
 }
 
 
+
+
+/* ----- MEDIA QUERY == +1600px / RESPONSIVE ----- */
+@media only screen and (min-width: 1600px) {
+    .nav-link{
+        padding-inline: 10px;
+    }
+
+    .image img{
+        max-width: 700px;
+    }
+}
+
 /* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 968px) {
     .nav-button{
         display: none;
     }
@@ -254,8 +285,8 @@ nav{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background: var(--third-color);
-        backdrop-filter: blur(20px);
+        background: rgba(187,187,187, 0.7);
+        backdrop-filter: blur(30px);
         width: 100%;
         min-height: 450px;
         height: 90vh;
@@ -271,3 +302,25 @@ nav{
         align-items: center;
         justify-content: center;
     }
+
+    .featured-box{
+        flex-direction: column;
+    }
+
+    .featured-text, .featured-image{
+        width: 100%;
+    }
+
+    .featured-image{
+        order: 1;
+    }
+
+    .image{
+        margin-top:120px;
+    }
+
+    .featured-text{
+        order: 2;
+        min-height: 30vh;
+    }
+}

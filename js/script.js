@@ -36,3 +36,12 @@
             navHeader.style.lineHeight  = "90px";
         }
     }
+
+/* ----- TYPING EFFECT ----- */
+    var typingEffect = new Typed('#typed',{
+        stringsElement: '.typedText',
+        loop: true,
+        typeSpeed : 65,
+        backSpeed : 40,
+        backDelay : 2500
+    });
