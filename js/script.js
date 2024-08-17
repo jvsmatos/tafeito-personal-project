@@ -45,3 +45,47 @@
         backSpeed : 40,
         backDelay : 2500
     });
+
+/* ----- SLIDESHOW ----- */
+    let slideIndex = 0;
+    let slides = document.getElementsByClassName("slide");
+    let currentOpacity = 0;
+    let interval;
+
+    function showSlides() {
+        // Hide all slides initially
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.opacity = 0;
+        }
+        
+        // Increment slideIndex to show the next slide
+        slideIndex++;
+        
+        // If slideIndex exceeds the number of slides, reset it to 1
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        
+        // Start fading in the current slide
+        fadeInSlide(slides[slideIndex - 1]);
+    }
+
+    function fadeInSlide(slide) {
+        currentOpacity = 0; // Reset opacity
+        clearInterval(interval);
+        
+        // Gradually increase the opacity
+        interval = setInterval(function() {
+            if (currentOpacity >= 1) {
+                clearInterval(interval); // Stop once fully visible
+            }
+            slide.style.opacity = currentOpacity;
+            currentOpacity += 0.05; // Increase opacity by 0.02 every 50ms
+        }, 50);
+    }
+
+    // Initial call to start the slideshow
+    showSlides();
+
+    // Change slide every 5 seconds
+    setInterval(showSlides, 5000);
