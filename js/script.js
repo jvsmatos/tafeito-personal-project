@@ -89,3 +89,27 @@
 
     // Change slide every 5 seconds
     setInterval(showSlides, 5000);
+
+/* ----- TAB EFFECT HIDE/SHOW ----- */
+    var tabClientes = document.getElementById('tabClientes');
+    var tabProf = document.getElementById('tabProf');
+    var clientes = document.getElementById('clientes');
+    var profissionais = document.getElementById('profissionais');
+
+    function mostrarClientes() {
+        clientes.style.display = 'block';
+        profissionais.style.display = 'none';
+        tabClientes.classList.add('active');
+        tabProf.classList.remove('active');
+    }
+
+    function mostrarProfissionais() {
+        clientes.style.display = 'none';
+        profissionais.style.display = 'block';
+        tabClientes.classList.remove('active');
+        tabProf.classList.add('active');
+    }
+
+    tabClientes.addEventListener('click', mostrarClientes);
+    tabProf.addEventListener('click', mostrarProfissionais);
+

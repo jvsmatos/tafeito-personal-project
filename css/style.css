@@ -17,7 +17,7 @@
     --third-color: #E0A500;
     --fourth-color:#000814;
     --fith-color: #E7E7E7;
-    --first-shadow-color: rgba(0, 0, 0, 0.1);
+    --first-shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 /* ------ BASE ----- */
@@ -80,10 +80,55 @@ html{
 }
 
 /* ------ CONTAINER ----- */
+.wrapper{
+    min-height: 200vh;
+    background: var(--fith-color);
+}
 
 .container{
     width: 100%;
     position: relative;
+}
+
+.section{
+    padding-block: 2em;
+}
+
+.featured-content{
+    max-width: 1000px;
+    margin:0 auto;
+    padding: 0 20px;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+}
+
+.col{
+    display: flex;
+    width: 50%;
+}
+
+
+/* ------ REUSABLES COMPONENTS ----- */
+.top-header{
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.top-header h1{
+    font-weight: 600;
+    color: var(--first-color);
+    margin-bottom: 10px;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--first-color);
 }
 
 /* ------ NAVIGATION ----- */
@@ -142,7 +187,7 @@ nav{
     font-weight: 500;
     padding-inline: 0px;
     margin-inline: 20px;
-    transition: transform 0.3s ease-in-out, color 0.3s ease;;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
 }
 
 .nav-link:hover{
@@ -165,11 +210,6 @@ nav{
 
 
 /* ------ CONTAINER ----- */
-.wrapper{
-    min-height: 200vh;
-    background: var(--fith-color);
-}
-
 .featured-box{
     padding-inline: 10vw;
     position: relative;
@@ -265,6 +305,100 @@ nav{
     -webkit-border-radius: 30% 5% 30% 5%;
 }
 
+.sobre-info{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-block: 25px 20px;
+    padding-inline: 25px;
+    background: var(--color-white);
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    border-radius: 10px;
+}
+
+.sobre-header{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    border: 0px solid red;
+}
+
+.sobre-header span{
+    padding: 5px 15px;
+    font-size: 14px;
+    background: var(--first-color);
+    border-radius: 5px;
+    color: var(--color-white);
+    font-weight: 500;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
+}
+
+.sobre-header span i{
+    margin-left:10px;
+}
+
+.sobre-info #profissionais{
+    display: none;
+}
+
+.sobre-header span:hover{
+    background: var(--fith-color);
+    color: var(--first-color);
+    cursor: pointer;
+}
+
+.sobre-header span.active{
+    background: var(--second-color);
+    color: var(--first-color);
+}
+
+.sobre-info ul{
+    font-size: 15px;
+    opacity: .85;
+    width: 100%;
+    margin-left: 25px;
+}
+
+.sobre-info:hover ul{
+    opacity: 1;
+}
+
+.sobre-info ul li{
+    list-style:square;
+    margin:15px 0;
+    line-height: 1.2;
+}
+
+.servicos-box{
+    margin: 10px;
+}
+
+.servicos-header{
+    margin-bottom: 20px;
+}
+
+.servicos-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.servicos-list span{
+    font-size: 13px;
+    background: var(--second-color);
+    color: var(--first-color);
+    padding: 2px 10px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+
+
+
+
+
 
 
 
@@ -324,7 +458,6 @@ nav{
 
     .featured-slide{
         order: 1;
-        margin-top: 10vh;
     }
 
     .featured-text{
@@ -334,5 +467,22 @@ nav{
     .featured-text{
         order: 2;
         min-height: 30vh;
+    }
+
+    .row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+    }
+    
+    .col{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        
+    }
+    .sobre-info ul{
+        padding:0 15px;
     }
 }
