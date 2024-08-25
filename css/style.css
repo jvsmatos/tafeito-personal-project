@@ -79,6 +79,10 @@ html{
     margin-left:10px;
 }
 
+fieldset{
+    border: 0;
+}
+
 /* ------ CONTAINER ----- */
 .wrapper{
     min-height: 200vh;
@@ -112,11 +116,19 @@ html{
     width: 50%;
 }
 
+.ok{
+    border: 2px solid rgb(2, 175, 25) !important; 
+}
+
+.error{
+    border: 2px solid rgb(199, 3, 3) !important;
+}
+
 
 /* ------ REUSABLES COMPONENTS ----- */
 .top-header{
     text-align: center;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 }
 
 .top-header h1{
@@ -125,7 +137,17 @@ html{
     margin-bottom: 10px;
 }
 
+.top-header span{
+    color: #5f5f5fe0;
+}
+
 h3{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--first-color);
+}
+
+h2{
     font-size: 20px;
     font-weight: 600;
     color: var(--first-color);
@@ -209,7 +231,7 @@ nav{
 }
 
 
-/* ------ CONTAINER ----- */
+/* ------ HERO SECTION ----- */
 .featured-box{
     padding-inline: 10vw;
     position: relative;
@@ -305,6 +327,8 @@ nav{
     -webkit-border-radius: 30% 5% 30% 5%;
 }
 
+
+/* ------ ABOUT/SERVICES SECTION ----- */
 .sobre-info{
     position: relative;
     display: flex;
@@ -394,8 +418,141 @@ nav{
     font-weight: 500;
 }
 
+/* ------ SIMULATION SECTION ----- */
+.orcamento-box{
+    background: var(--second-color);
+    min-height: 30vh;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+}
 
+.form-control{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
 
+.form-control legend{
+    font-weight: 600;
+}
+
+.form-control > span{
+    font-size: 12px;
+    color: #5f5f5fe0;
+}
+
+.form-client{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group > label{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-services{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field{
+    height: 30px;
+    border: 2px solid #585858;
+    background: #ffffffce;
+    outline: none;
+    font-size: 14px;
+    border-radius: 5px;
+    padding-inline: 10px;
+    color: black;
+}
+
+.input-select{
+    width: 70%;
+}
+
+.input-check{
+    height: 30px;
+    margin-left: 10px;
+}
+
+.option-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+    margin:10px 0;
+    display: none;
+}
+
+.option-list-col{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+}
+
+.total{
+    color: var(--first-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top:20px;
+    display: none;
+}
+
+span.small-info{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+#total{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left:10px;
+}
+
+.buttons{
+    display: flex;
+    gap: 40px;
+    margin-top:30px;
+    flex-wrap: wrap;
+}
+
+.botaoPedido{
+    padding: 15px;
+    font-size: 14px;
+    background: var(--first-color);
+    border-radius: 5px;
+    color: var(--color-white);
+    font-weight: 500;
+    outline: none;
+    border: 0;
+    width: 40%;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease; 
+}
+
+.botaoPedido:hover{
+    background: var(--fith-color);
+    color: var(--first-color);
+    cursor: pointer;
+}
+
+.botaoPedido>i{
+    margin-left:10px;
+}
 
 
 

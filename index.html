@@ -153,6 +153,146 @@
                     </div>
                 </div>
             </section>
+
+            <section class="section" id="orcamento">
+                <div class="featured-content">
+                    <div class="top-header">
+                        <h1>Qual o preço para...</h1>
+                        <span>Quer saber se as suas necessidades estão próximas do seu budget?</span><br>
+                        <span>Faça uma simulação ou peça um orçamento mais detalhado.</span>
+                    </div>
+                    <div class="orcamento-box">
+                        <form action="#" id="orc-simulator" class="form-control">
+                            <span>* Durante 7 dias a sua solicitação estará disponível para que os profissionais confirmem os valores ou peçam mais informações.</span>
+                            <span>** Os valores são considerados, por default, com uso do alpinismo para execução dos trabalhos.</span>
+                            <span>*** Para estas simulações todos os materiais necessários já estão inclusos nos valores apresentados.</span>
+                            <fieldset>
+                                <legend>Dados do cliente:</legend>
+                                <div class="form-client">
+                                    <div class="form-group">
+                                        <label for="nome">Nome</label>
+                                        <input type="text" id="nome" class="input-field" placeholder="John">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apelido">Apelido</label>
+                                        <input type="text" id="apelido" class="input-field" placeholder="Doe">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telemovel">Telemóvel</label>
+                                        <input type="tel" id="telemovel"  class="input-field" placeholder="+351 999 999 999">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                            <fieldset>
+                                <legend>Informações do serviço:</legend>
+                                <div class="form-services">
+                                    <div class="form-group">
+                                        <label for="servico">Serviço</label>
+                                        <select name="servico" id="servico" onchange="showFields()" class="input-field input-select">
+                                            <option value="">Selecione o serviço</option>
+                                            <option value="pintura-interna">Pintura Interna</option>
+                                            <option value="pintura-externa">Pintura Externa</option>
+                                            <option value="pequenos-retoques">Pequenos Retoques</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="option-list" id="campos">
+                                        <div class="form-group">
+                                            <label for="tipo">Tipo de edificação:</label>
+                                            <select name="tipo" id="tipo" class="input-field">
+                                            <option value="">Selecione o tipo</option>
+                                            <option value="casa">Casa</option>
+                                            <option value="apartamento">Apartamento</option>
+                                            <option value="comercial">Comercial</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="area">Área de Pintura (m²):</label>
+                                            <input type="number" id="area" min="0" class="input-field">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="altura">Altura da edificação:</label>
+                                            <input type="number" id="altura" min="0" class="input-field">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="estado">Estado atual:</label>
+                                            <select name="estado" id="estado" class="input-field">
+                                            <option value="">Selecione o estado atual:</option>
+                                            <option value="pintura">Pintura existente</option>
+                                            <option value="manchas">Manchas de humidade</option>
+                                            <option value="ceramica">Revestimento cerâmico</option>
+                                            <option value="ceramica">Sem revestimento</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="acabamento">Tipo de acabamento:</label>
+                                            <select name="acabamento" id="acabamento" class="input-field">
+                                            <option value="">Selecione o acabamento desejado:</option>
+                                            <option value="1">Simples</option>
+                                            <option value="1.35">Texturizado</option>
+                                            <option value="1.62">Premium</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inicio">Pretensão de iniciar em:</label>
+                                            <select name="inicio" id="inicio" class="input-field">
+                                            <option value="">Quando deseja iniciar os trabalhos?</option>
+                                            <option value="1">Em até 10 dias</option>
+                                            <option value="1.2">2 a 4 semanas</option>
+                                            <option value="1.45">1 a 3 meses</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="option-list-col" id="extras">
+                                        <legend>Itens Adicionais:</legend>
+                                        <div class="form-group-row">
+                                            <label for="teto">Pintura do teto?</label>
+                                            <input type="checkbox" id="teto" class="input-check">
+                                        </div>
+                                        <div class="form-group-row">  
+                                            <label for="rodape">Pintura do rodapé?</label>
+                                            <input type="checkbox" id="rodape" class="input-check">
+                                        </div>
+                                        <div class="form-group-row">
+                                            <label for="esquadrias">Pintura de portas/janelas?</label>
+                                            <input type="checkbox" id="esquadrias" class="input-check">
+                                        </div>
+                                        <div class="form-group-row">
+                                            <label for="fds">Execução durante fim de semana?</label>
+                                            <input type="checkbox" id="fds" class="input-check">
+                                        </div>
+                                        <div class="form-group-row">
+                                            <label for="reparo">Reparo e tratamento de superfície?</label>
+                                            <input type="checkbox" id="reparo" class="input-check">
+                                        </div>
+                                        <div class="form-group-row">
+                                            <label for="isolamento">Camada de impermeabilização?</label>
+                                            <input type="checkbox" id="isolamento" class="input-check">
+                                        </div>
+                                        <div class="form-group-row">
+                                            <label for="andaimes">Serviço em andaimes?</label>
+                                            <input type="checkbox" id="andaimes" class="input-check">
+                                        </div>
+
+                                    </div>                                        
+                                </div>
+                            </fieldset>
+                            <div class="total">Valor Estimado <span class="small-info">(S/ IVA):</span> <span id="total"> €0.00 - €0.00</span></div>
+                            <div class="buttons">
+                                <button type="button" id="botaoPedido" class="botaoPedido" onclick="createOrder()">Encontre um profissional <i class="fa-solid fa-brush"></i></button>
+                                <button type="button" id="botaoContato" class="botaoPedido">Solicitar contato <i class="fa-solid fa-phone"></i></button>
+                            </div>     
+                        </form>
+                    </div>
+                </div>
+            </section>
         </main>
 
     <!-- FOOTER -->
