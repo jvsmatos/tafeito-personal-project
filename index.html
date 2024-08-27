@@ -189,8 +189,8 @@
                                 <div class="form-services">
                                     <div class="form-group">
                                         <label for="servico">Serviço</label>
-                                        <select name="servico" id="servico" onchange="showFields()" class="input-field input-select">
-                                            <option value="">Selecione o serviço</option>
+                                        <select name="servico" id="servico" class="input-field input-select">
+                                            <option value="0">Selecione o serviço</option>
                                             <option value="pintura-interna">Pintura Interna</option>
                                             <option value="pintura-externa">Pintura Externa</option>
                                             <option value="pequenos-retoques">Pequenos Retoques</option>
@@ -214,18 +214,13 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="altura">Altura da edificação:</label>
-                                            <input type="number" id="altura" min="0" class="input-field">
-                                        </div>
-
-                                        <div class="form-group">
                                             <label for="estado">Estado atual:</label>
                                             <select name="estado" id="estado" class="input-field">
                                             <option value="">Selecione o estado atual:</option>
-                                            <option value="pintura">Pintura existente</option>
-                                            <option value="manchas">Manchas de humidade</option>
-                                            <option value="ceramica">Revestimento cerâmico</option>
-                                            <option value="ceramica">Sem revestimento</option>
+                                            <option value="1">Pintura existente</option>
+                                            <option value="1.3">Manchas de humidade</option>
+                                            <option value="1.5">Revestimento cerâmico</option>
+                                            <option value="1.22">Sem revestimento</option>
                                             </select>
                                         </div>
 
@@ -234,8 +229,8 @@
                                             <select name="acabamento" id="acabamento" class="input-field">
                                             <option value="">Selecione o acabamento desejado:</option>
                                             <option value="1">Simples</option>
-                                            <option value="1.35">Texturizado</option>
-                                            <option value="1.62">Premium</option>
+                                            <option value="1.3">Texturizado</option>
+                                            <option value="1.65">Premium</option>
                                             </select>
                                         </div>
 
@@ -243,9 +238,9 @@
                                             <label for="inicio">Pretensão de iniciar em:</label>
                                             <select name="inicio" id="inicio" class="input-field">
                                             <option value="">Quando deseja iniciar os trabalhos?</option>
-                                            <option value="1">Em até 10 dias</option>
-                                            <option value="1.2">2 a 4 semanas</option>
-                                            <option value="1.45">1 a 3 meses</option>
+                                            <option value="1.35">Em até 5 dias</option>
+                                            <option value="1.18">1 a 3 semanas</option>
+                                            <option value="1.08">1 a 3 meses</option>
                                             </select>
                                         </div>
                                     </div>
@@ -265,8 +260,8 @@
                                             <input type="checkbox" id="esquadrias" class="input-check">
                                         </div>
                                         <div class="form-group-row">
-                                            <label for="fds">Execução durante fim de semana?</label>
-                                            <input type="checkbox" id="fds" class="input-check">
+                                            <label for="papel">Remover papel de parede?</label>
+                                            <input type="checkbox" id="papel" class="input-check">
                                         </div>
                                         <div class="form-group-row">
                                             <label for="reparo">Reparo e tratamento de superfície?</label>
@@ -287,7 +282,7 @@
                             <div class="total">Valor Estimado <span class="small-info">(S/ IVA):</span> <span id="total"> €0.00 - €0.00</span></div>
                             <div class="buttons">
                                 <button type="button" id="botaoPedido" class="botaoPedido" onclick="createOrder()">Encontre um profissional <i class="fa-solid fa-brush"></i></button>
-                                <button type="button" id="botaoContato" class="botaoPedido">Solicitar contato <i class="fa-solid fa-phone"></i></button>
+                                <button type="button" id="botaoContato" class="botaoPedido" onclick="askContact()">Solicitar contato <i class="fa-solid fa-phone"></i></button>
                             </div>     
                         </form>
                     </div>
