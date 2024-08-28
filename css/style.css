@@ -422,7 +422,7 @@ nav{
 .orcamento-box{
     background: var(--second-color);
     min-height: 30vh;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
 }
@@ -480,10 +480,6 @@ nav{
     color: black;
 }
 
-.input-select{
-    width: 70%;
-}
-
 .input-check{
     height: 30px;
     margin-left: 10px;
@@ -523,11 +519,11 @@ span.small-info{
     margin-left:10px;
 }
 
-.buttons{
+.button{
     display: flex;
     gap: 40px;
-    margin-top:30px;
-    flex-wrap: wrap;
+    margin-top:20px;
+    justify-content: center;
 }
 
 .botaoPedido{
@@ -539,8 +535,7 @@ span.small-info{
     font-weight: 500;
     outline: none;
     border: 0;
-    width: 40%;
-    margin-bottom: 15px;
+    width: 50%;
     transition: transform 0.3s ease-in-out, color 0.3s ease; 
 }
 

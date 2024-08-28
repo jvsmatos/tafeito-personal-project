@@ -171,15 +171,15 @@
                                 <div class="form-client">
                                     <div class="form-group">
                                         <label for="nome">Nome</label>
-                                        <input type="text" id="nome" class="input-field" placeholder="John">
+                                        <input type="text" id="nome" class="input-field" placeholder="John" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="apelido">Apelido</label>
-                                        <input type="text" id="apelido" class="input-field" placeholder="Doe">
+                                        <input type="text" id="apelido" class="input-field" placeholder="Doe" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="telemovel">Telemóvel</label>
-                                        <input type="tel" id="telemovel"  class="input-field" placeholder="+351 999 999 999">
+                                        <input type="tel" id="telemovel"  class="input-field" maxlength="9" placeholder="999999999" required>
                                     </div>
                                 </div>
                             </fieldset>
@@ -189,8 +189,8 @@
                                 <div class="form-services">
                                     <div class="form-group">
                                         <label for="servico">Serviço</label>
-                                        <select name="servico" id="servico" class="input-field input-select">
-                                            <option value="0">Selecione o serviço</option>
+                                        <select name="servico" id="servico" class="input-field">
+                                            <option value="">Selecione o serviço</option>
                                             <option value="pintura-interna">Pintura Interna</option>
                                             <option value="pintura-externa">Pintura Externa</option>
                                             <option value="pequenos-retoques">Pequenos Retoques</option>
@@ -214,6 +214,16 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="inicio">Pretensão de iniciar em:</label>
+                                            <select name="inicio" id="inicio" class="input-field">
+                                            <option value="">Quando deseja iniciar os trabalhos?</option>
+                                            <option value="1.35">Em até 5 dias</option>
+                                            <option value="1.18">1 a 3 semanas</option>
+                                            <option value="1.08">1 a 3 meses</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="estado">Estado atual:</label>
                                             <select name="estado" id="estado" class="input-field">
                                             <option value="">Selecione o estado atual:</option>
@@ -231,16 +241,6 @@
                                             <option value="1">Simples</option>
                                             <option value="1.3">Texturizado</option>
                                             <option value="1.65">Premium</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="inicio">Pretensão de iniciar em:</label>
-                                            <select name="inicio" id="inicio" class="input-field">
-                                            <option value="">Quando deseja iniciar os trabalhos?</option>
-                                            <option value="1.35">Em até 5 dias</option>
-                                            <option value="1.18">1 a 3 semanas</option>
-                                            <option value="1.08">1 a 3 meses</option>
                                             </select>
                                         </div>
                                     </div>
@@ -280,9 +280,8 @@
                                 </div>
                             </fieldset>
                             <div class="total">Valor Estimado <span class="small-info">(S/ IVA):</span> <span id="total"> €0.00 - €0.00</span></div>
-                            <div class="buttons">
+                            <div class="button">
                                 <button type="button" id="botaoPedido" class="botaoPedido" onclick="createOrder()">Encontre um profissional <i class="fa-solid fa-brush"></i></button>
-                                <button type="button" id="botaoContato" class="botaoPedido" onclick="askContact()">Solicitar contato <i class="fa-solid fa-phone"></i></button>
                             </div>     
                         </form>
                     </div>

@@ -117,9 +117,9 @@
 /* ----- PRICE SIMULATOR ----- */
     // Valores mínimos e máximos para cálculo
     const valoresServicos = {
-        'pintura-interna': { valorMinimo: 9, valorMaximo: 13, valorMinimoServico: 150 },
-        'pintura-externa': { valorMinimo: 12, valorMaximo: 18, valorMinimoServico: 250 },
-        'pequenos-retoques': { valorMinimo: 13, valorMaximo: 16, valorMinimoServico: 100 }
+        'pintura-interna':      { valorMinimo: 9, valorMaximo: 13, valorMinimoServico: 150 },
+        'pintura-externa':      { valorMinimo: 12, valorMaximo: 18, valorMinimoServico: 250 },
+        'pequenos-retoques':    { valorMinimo: 13, valorMaximo: 16, valorMinimoServico: 100 }
     };
 
     // Preços fixos para serviços adicionais
@@ -135,6 +135,7 @@
 
     // Referências aos elementos do DOM
     const servicoField      = document.getElementById('servico');
+    const tipoField         = document.getElementById('tipo');
     const areaField         = document.getElementById('area');
     const estadoField       = document.getElementById('estado');
     const acabamentoField   = document.getElementById('acabamento');
@@ -144,6 +145,9 @@
     const extras            = document.getElementById('extras');
     const totalSection      = document.querySelector('.total');
     const botaoPedido       = document.getElementById('botaoPedido');
+    const nomeCliente       = document.getElementById('nome');
+    const apelidoCliente    = document.getElementById('apelido');
+    const telCliente        = document.getElementById('telemovel');
 
     // Função para calcular o total estimado
     function calcularTotal() {
@@ -154,7 +158,7 @@
 
         // Identificar o tipo de serviço selecionado
         const tipoServico   = servicoField.value;
-        const valores       = valoresServicos[tipoServico] || valoresServicos.pinturaInterna;
+        const valores       = valoresServicos[tipoServico];
 
         let precoMinimo = valores.valorMinimo * area;
         let precoMaximo = valores.valorMaximo * area;
@@ -179,15 +183,16 @@
 
     // Função para exibir todos os campos após a seleção do serviço
     function showFields() {
-        campos.style.display = 'flex';
-        extras.style.display = 'flex';
-        totalSection.style.display = 'block';
+        campos.style.display        = 'flex';
+        extras.style.display        = 'flex';
+        totalSection.style.display  = 'block';
     }
 
+    // Função para ocultar todos os campos
     function hideFields(){
-        campos.style.display = 'none';
-        extras.style.display = 'none';
-        totalSection.style.display = 'none';
+        campos.style.display        = 'none';
+        extras.style.display        = 'none';
+        totalSection.style.display  = 'none';
     }
 
     // Função para validar campos e aplicar classes
@@ -205,8 +210,17 @@
             }
         }
 
+        // Função para validar número de telefone no formato XXXXXXXXX
+        function validarTelefone(telefone) {
+            const telefoneRegex = /^\d{3}\d{3}\d{3}$/;
+            return telefoneRegex.test(telefone);
+        }
+
         // Validar todos os campos obrigatórios
-        
+        validarCampo(nomeCliente, nomeCliente.value !== '');
+        validarCampo(apelidoCliente, apelidoCliente.value !== '');
+        validarCampo(telCliente, telCliente.value !== '' && validarTelefone(telCliente.value));
+        validarCampo(tipoField, tipoField.value !== '');
         validarCampo(servicoField, servicoField.value !== '');
         validarCampo(areaField, areaField.value !== '' && !isNaN(areaField.value) && parseFloat(areaField.value) > 0);
         validarCampo(estadoField, estadoField.value !== '');
@@ -216,19 +230,20 @@
         return allFieldsValid;
     }
 
-    // Função para criar o pedido
+    // Função para solicitar um profissional
     function createOrder() {
-        // Validar campos
+        //Chamada da função para verificar se os campos estão válidos antes de submeter o pedido
         const camposValidos = validarCampos();
 
+        //Caso os campos estejam válidos o pedido será submetido, caso contrário alertará o usuário para preencher/corrigir os campos obrigatórios
         if (camposValidos) {
-            alert('Pedido submetido com sucesso!');
+            alert('Pedido submetido com sucesso!\n\nAssim que o seu pedido for analisado por algum profissional o mesmo entrará em contato consigo.');
         } else {
-            alert('Por favor, preencha todos os campos corretamente.');
+            alert('Por favor, preencha todos os campos obrigatórios corretamente.');
         }
     }
 
-    // Adicionar event listeners para atualizar o total e verificar os campos
+    // Adicionar event listeners para atualizar o total dos respectivos campos sempre que houver alterações
     const camposParaCalculo = [
         areaField,
         estadoField,
@@ -245,7 +260,7 @@
     // Event listener para mostrar campos e recalcular total ao mudar o serviço
     servicoField.addEventListener('change', () => {
         
-        if (servicoField.value === "0") { // Se a opção "Selecione o serviço" for escolhida
+        if (servicoField.value === "") { // Se não for selecionado nenhum serviço irá esconder os campos
             hideFields();
         } else {
             showFields();
