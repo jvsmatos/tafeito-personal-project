@@ -299,5 +299,16 @@
         });
     }
 
-    /*------GALLERY SLIDER------*/
-
+/*------GALLERY SLIDER------*/
+    document.querySelectorAll('.gallery-box img').forEach(image => {
+        // Função para abrir modal com imagem expandida
+        image.onclick = () =>{
+            document.querySelector('.image-box').style.display = 'block';
+            document.querySelector('.image-box img').src = image.getAttribute('src');
+        }
+    });
+    
+    // Função fechar modal
+    document.querySelector('.image-box span').onclick = () =>{
+        document.querySelector('.image-box').style.display = 'none';
+    }
