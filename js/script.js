@@ -312,3 +312,39 @@
     document.querySelector('.image-box span').onclick = () =>{
         document.querySelector('.image-box').style.display = 'none';
     }
+
+/*------MAP SCRIPT------*/
+    // Inicializando o mapa com Leaflet e OpenStreetMap
+    const map = L.map('map').setView([38.733556, -9.14114], 16); // MasterD Lisboa
+
+    // Camada do mapa usando OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    // Adicionando marcador no ponto de destino (MasterD Lisboa)
+    const destination = [38.733556, -9.14114]; // Coordenadas da MasterD Lisboa
+    const marker = L.marker(destination).addTo(map).bindPopup("MasterD Lisboa").openPopup();
+
+    // Função para obter as direções
+    function getDirections() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const currentLocation = [position.coords.latitude, position.coords.longitude];
+
+                // Chamada para a API do OpenRouteService
+                const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248a0add5b4d4e74aff89ac88018d1a1ec6&start=${currentLocation[1]},${currentLocation[0]}&end=${destination[1]},${destination[0]}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const route = data.routes[0].geometry.coordinates.map(coord => [coord[1], coord[0]]);
+                        L.polyline(route, { color: 'blue' }).addTo(map);
+                    })
+                    .catch(error => console.error('Erro ao buscar direções:', error));
+            }, 
+            () => alert("Erro ao obter a localização."));
+        } else {
+            alert("Navegador não suporta Geolocalização.");
+        }
+    }

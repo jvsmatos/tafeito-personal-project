@@ -7,8 +7,12 @@
 
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/3c8c59d717.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
 
     <link rel="shortcut icon" href="images/TF.png" type="image/x-icon"> 
+
 </head>
 <body>
     
@@ -333,6 +337,65 @@
                     <div class="image-box">
                         <span>&times;</span>
                         <img src="" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT SECTION -->
+            <section class="section" id="contact">
+                <div class="featured-content">
+                    <div class="top-header">
+                        <h1>Quer mais informações?</h1>
+                        <span>Se tens mais questões ou não sabes por onde começar, contate-nos e ajudamos!</span>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="contact-text">
+                                <p>Somos <span>viciados</span> em entregar <span>serviços de qualidade</span>, tanto nós quanto os nossos parceiros.</p>
+                                <p>Quer saber mais sobre o porque somos tão <span>entusiasmados</span> com o nosso trabalho?</p>
+                                <p>Entre em contato, e nós te contamos!</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <form action="" class="contact-form">
+                                <fieldset>
+                                    <div class="contact-form-content">
+                                        <legend>Formulário de Contato:</legend>
+                                        <div class="contact-box">
+                                            <div class="form-group">
+                                                <label for="nome1">Nome</label>
+                                                <input type="text" id="nome1" class="input-field" placeholder="John" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="apelido1">Apelido</label>
+                                                <input type="text" id="apelido1" class="input-field" placeholder="Doe" required>
+                                            </div>
+                                        </div>
+                                        <div class="contact-box">
+                                            <div class="form-group">
+                                                <label for="email">E-mail</label>
+                                                <input type="email" id="email" placeholder="email@email.com" class="input-field" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="assunto">Assunto</label>
+                                                <input type="text" id="assunto" placeholder="assunto"  class="input-field" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mensagem">Mensagem</label>
+                                            <textarea name="mensagem" placeholder="Conte-nos aqui quais as suas questões e assim trataremos para que receba exclusivamente apenas o que deseja saber!" id="mensagem" class="input-textarea" id="" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="submit">Enviar <i class="fa-solid fa-paper-plane"></i></button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="location">
+                        <button class="btn" onclick="getDirections()">Clique aqui e obtenha direções <i class="fa-solid fa-location-dot"></i></button>
+                        <div id="map"></div>
                     </div>
                 </div>
             </section>
