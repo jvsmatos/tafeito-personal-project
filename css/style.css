@@ -183,9 +183,6 @@ nav{
 }
 
 .nav-logo span{
-    position: absolute;
-    top: -4px;
-    right: -12px;
     font-size: 1.35em;
     color: var(--second-color);
 }
@@ -268,18 +265,6 @@ nav{
 
 .color1{
     color: var(--second-color);
-    font-weight: bold;
-}
-.color2{
-    color: red;
-    font-weight: bold;
-}
-.color3{
-    color: rgb(6, 216, 6);
-    font-weight: bold;
-}
-.color4{
-    color: #0fd3ec;
     font-weight: bold;
 }
 
@@ -701,11 +686,114 @@ span.small-info{
 
 #map{
     width: 100%;
+    z-index: 0;
     height: 400px;
     border: 3px solid #FFF;
     border-radius: 10px;
     box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
 }
+
+/* ------ FOOTER ----- */
+.footer-box{
+    padding-inline: 10vw;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    background: var(--first-color);
+    border: 0px solid red;
+    min-height: 450px;
+}
+
+.footer-group{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    border-bottom: 1px solid #e7e7e72a;
+    justify-content: space-between;
+}
+
+.footer-logo{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    gap:10px;
+}
+
+.footer-options{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap:15px;
+}
+
+.footer-options a{
+    text-decoration: none;
+    color: var(--fith-color);
+    font-size: 18px;
+}
+
+.footer-options a:hover{
+    color: var(--color-white);
+}
+
+.social-media{
+    display: flex;
+    margin-top:15px;
+    gap:20px;
+}
+
+.social-media a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+.social-media a:hover{
+    color: var(--second-color);
+}
+
+.social-media a i{
+    height: 30px;
+}
+
+.footer-logo a{
+    text-decoration: none;
+}
+
+.name{
+    font-size: 32px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: var(--second-color);
+}
+
+.name span{
+    font-size: 1.35em;
+    color: var(--color-white);
+}
+
+.input-subscribe{
+    height: 35px;
+    border: 2px solid #585858;
+    background: #ffffffce;
+    outline: none;
+    font-size: 14px;
+    border-radius: 5px;
+    padding-inline: 10px;
+    color: black;
+}
+
+.input-subscribe:focus{
+    border: 2px solid #DDD;
+}
+
+
+
+
+
+
+
+
+
 
 
 /* ----- MEDIA QUERY == +1600px / RESPONSIVE ----- */
@@ -717,7 +805,6 @@ span.small-info{
     .slide img{
         max-width: 700px;
     }
-
 }
 
 /* ----- MEDIA QUERY == 1500px / RESPONSIVE ----- */
