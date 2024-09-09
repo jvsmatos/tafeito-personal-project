@@ -1,3 +1,5 @@
+window.onload = setTimeout(() => alert('Bem vindo!'), 5000)
+
 /* ----- NAVIGATION RESPONSIVE MENU ----- */
     function menuFunction(){
         var menuBtn = document.getElementById("myMenu");
@@ -348,3 +350,73 @@
             alert("Navegador não suporta Geolocalização.");
         }
     }
+
+/*------RSS FEED SHOW/HIDE------*/
+    const btnFeed = document.getElementById('rss-button'),
+        feed = document.getElementById('rss')
+    
+        btnFeed.addEventListener('click',() =>{
+            feed.classList.toggle('view-rss');
+    });
+
+    const sourceRSS = 'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/publicoRSS'
+    const loadRSS = (feedSrc) => {
+        const src = feedSrc
+        const xhttp = new XMLHttpRequest();
+        xhttp.responseType = 'json'
+        xhttp.open("get", src, true);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                showRSS(this)
+            }
+        };
+        xhttp.send();
+    }
+
+    function showRSS(json) {
+        const ul = document.querySelector('.rss-list'),
+              objJson = json.response;
+        let resultado = '';
+        //console.log("Estrutura JSON retornada:", objJson);
+
+
+        objJson.items.forEach((item) => {
+            //console.log(`Item ${index + 1}:`, item);
+            let published = item.pubDate;
+            let link = item.link;
+            let title = item.title;
+            let summary = item.description;
+            let category = item.categories.length ? item.categories[0] : 'Sem Categoria';
+            
+            //console.log(`Título: ${title}, Categoria: ${category}, Publicado em: ${published}`);
+
+            // Formatar a data
+            let date = new Date(published);
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
+            let hour = date.getHours();
+            let minute = date.getMinutes();
+    
+            resultado += `
+                <li class="rss-item">
+                    <h3 class="item-title">
+                        <a href="${link}" class="rss-link" target="_blank">
+                            ${title}
+                        </a>
+                    </h3>
+                    <div class="item-info">
+                        <p class="rss-category"><strong>Category:</strong> ${category}</p>
+                        <p class="rss-date"><strong>Date:</strong> ${day}/${month}/${year} - ${hour}:${minute}</p>
+                    </div>
+                    <div class="item-description">
+                        <p>${summary}</p>
+                    </div>
+                </li>
+            `;
+        });
+
+    ul.innerHTML = resultado;
+    };
+
+    window.onload = loadRSS(sourceRSS)

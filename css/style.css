@@ -95,7 +95,7 @@ fieldset{
 }
 
 .section{
-    padding-block: 2em;
+    padding-top: 80px;
 }
 
 .featured-content{
@@ -128,7 +128,7 @@ fieldset{
 /* ------ REUSABLES COMPONENTS ----- */
 .top-header{
     text-align: center;
-    margin-bottom: 2em;
+    margin-bottom: 4em;
 }
 
 .top-header h1{
@@ -541,12 +541,14 @@ span.small-info{
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    max-width: 1300px;
+    margin-inline: auto;
     justify-content: center;
     padding: 10px;
 }
 
 .image-item{
-    width: 350px;
+    width: 275px;
     box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
     overflow: hidden;
     cursor: pointer;
@@ -671,8 +673,8 @@ span.small-info{
 .location{
     display: flex;
     flex-direction: column;
-    margin:30px 0;
     align-items: center;
+    padding-block: 80px;
     gap: 20px;
 }
 
@@ -775,18 +777,18 @@ span.small-info{
 
 .input-subscribe{
     height: 45px;
-    border: 2px solid #585858;
-    background: #ffffffce;
+    border: 2px solid white;
+    background: var(--first-color);
     outline: none;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 10px; 
     padding-inline: 10px;
-    color: black;
+    color: white;
     margin-bottom: 10px;
 }
 
 .input-subscribe:focus{
-    border: 2px solid #DDD;
+    border: 2px solid var(--second-color);
 }
 
 .rights{
@@ -809,13 +811,14 @@ span.small-info{
 .rss{
     position: fixed;
     top: 130px;
-    right: -100%;
-    width: 100%;
+    right: -60%;
+    width: 60%;
     height: 80vh;
-    background: white;
-    padding: 4rem 2rem;
+    padding: 2rem 2rem 2rem 3rem;
     transition: .4s;
     z-index: 100;
+    background: rgba(190, 189, 189, 0.8);
+    backdrop-filter: blur(30px);
 }
 
 .rss-button{
@@ -844,6 +847,66 @@ span.small-info{
     left: -6rem;
 }
 
+.view-rss{
+    right:0;
+}
+
+.view-rss .rss-button{
+    left:-2.5rem;
+}
+
+.rss-feed{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    width: 100%;
+    align-items: center;
+    padding: 0px 0px 10px 20px;
+    border: 0px solid white;
+}
+
+.rss-feed h2{
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+.rss-list{
+    list-style: none;
+    overflow-y: scroll;
+    height: calc(100vh - 20rem);
+}
+
+.rss-list li{
+    border-left: 5px solid var(--first-color);
+    margin:10px 0;
+    padding:10px;
+}
+
+.rss-list li:hover{
+    border-left: 5px solid var(--second-color);
+    background: rgba(202, 202, 202, 0.671);
+}
+
+.item-info{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.rss-link{
+    font-size: 16px;
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+.rss-link:hover{
+    text-decoration: underline;
+}
+
+.item-description{
+    font-size: 13px;
+}
 
 
 
@@ -868,7 +931,7 @@ span.small-info{
     }
 }
 
-/* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
+/* ----- MEDIA QUERY == 968px / RESPONSIVE ----- */
 @media only screen and (max-width: 968px) {
     .nav-button{
         display: none;
@@ -949,9 +1012,26 @@ span.small-info{
     .image-item:nth-child(n+6){
         display: none;
     }
+
+    .rss{
+        right: -100%;
+        width: 100%;
+    }
+
+    .rss-feed{
+        gap:50px;
+    }
+
+    .view-rss .rss-button{
+        left:0;
+    }
+
+    .view-rss{
+        right: 0;
+    }
 }
 
-/* ----- MEDIA QUERY == 900px / RESPONSIVE ----- */
+/* ----- MEDIA QUERY == 540px / RESPONSIVE ----- */
 @media only screen and (max-width: 540px) {
     .rights{
         justify-content: center;
