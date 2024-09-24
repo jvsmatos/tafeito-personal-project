@@ -1,4 +1,4 @@
-window.onload = setTimeout(() => alert('Bem vindo!'), 5000)
+//window.onload = setTimeout(() => alert('Bem vindo!'), 5000)
 
 /* ----- NAVIGATION RESPONSIVE MENU ----- */
     function menuFunction(){
@@ -26,16 +26,21 @@ window.onload = setTimeout(() => alert('Bem vindo!'), 5000)
 
     function headerShadow(){
         const navHeader = document.getElementById("header");
+        const navMenu   = document.getElementsByClassName("nav-menu")[0];
 
         if(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50){
 
             navHeader.style.boxShadow   = "0 2px 6px rgba(0, 0, 0, 0.2)";
             navHeader.style.height      = "70px";
             navHeader.style.lineHeight  = "70px";
+            navMenu.style.top           = "70px";
+            navMenu.style.height        = "92vh";
         }else{
             navHeader.style.boxShadow   = "none";
             navHeader.style.height      = "90px";
             navHeader.style.lineHeight  = "90px";
+            navMenu.style.top           = "90px";
+            navMenu.style.height        = "90vh";
         }
     }
 

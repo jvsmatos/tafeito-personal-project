@@ -1,0 +1,251 @@
+/* ------ FONT LINK ----- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* ------ VARIABLES ----- */
+:root{
+    --body-color: rgb(250, 250, 250);
+    --color-white: rgb(255, 255, 255);
+
+    --text-color-second: #001D3D;
+    --text-color-third: #FFD60A;
+    
+    --first-color: #001D3D;
+    --first-color-hover: #001D3D;
+    
+    --second-color: #FFD60A;
+    --third-color: #E0A500;
+    --fourth-color:#000814;
+    --fith-color: #E7E7E7;
+    --first-shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ------ BASE ----- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ------ SMOOTH SCROLL ----- */
+html{
+    scroll-behavior: smooth;
+}
+
+
+/* ------ CHANGE SCROLL BAR DESIGN ----- */
+::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar-track{
+    background: #F1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #CCC;
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #BBB;
+}
+
+
+/* ------ GLOBAL SETTINGS ----- */
+fieldset{
+    border: 0;
+}
+
+/* ------ CONTAINER ----- */
+.wrapper{
+    width: 100%;
+    padding-top:90px;
+    min-height: 100vh;
+    background: var(--fith-color);
+}
+
+.container{
+    width: 100%;
+    position: relative;
+}
+
+.main-container{
+    max-width: 1000px;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ------ REUSABLES COMPONENTS ----- */
+.btn{
+    font-weight: 500;
+    padding: 12px 15px;
+    background: var(--color-white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s;
+    color: var(--first-color);
+}
+
+.btn2{
+    font-weight: 500;
+    padding: 12px 15px;
+    background: var(--first-color);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s;
+    color: var(--color-white);
+}
+
+.ok{
+    border: 1px solid green;
+    background: rgba(0, 128, 0, 0.2);
+    color: green;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 10px 30px;
+    text-align: center;
+    margin-block:20px;
+    font-size: 14px;
+}
+
+.error{
+    border: 1px solid rgb(202, 3, 3);
+    background: rgba(255, 0, 0, 0.2);
+    color: rgb(202, 3, 3);
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 10px 30px;
+    text-align: center;
+    margin-block:20px;
+    font-size: 14px;
+}
+
+.btn:hover, .btn2:hover{
+    color: var(--first-color);
+    background: var(--second-color);
+}
+
+.btn>i{
+    margin-left:10px;
+}
+
+/* ------ NAVIGATION ----- */
+nav{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    background: var(--first-color);
+    padding-inline: 10vw;
+    transition: .3s;
+    z-index: 100;
+    justify-content: center;
+}
+
+.header-container{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-logo{
+    position: relative;
+}
+
+.nav-logo a{
+    text-decoration: none;
+}
+
+.nav-name{
+    width: 150px;
+    font-size: 32px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: var(--second-color);
+}
+
+.nav-logo span{
+    font-size: 1.35em;
+    color: var(--color-white);
+}
+
+/* ------ LOGIN FORM ----- */
+.login-form{
+    max-width: 400px;
+    min-height: 400px;
+    background: var(--color-white);
+    box-shadow: 1px 5px 8px 2px var(--first-shadow-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10vh;
+}
+
+.login-form fieldset{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-form legend{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    padding-block: 15px;
+}
+
+.login-form p, a{
+    text-align: center;
+    margin-block: 10px;
+    font-size: 14px;
+    color: #888888;
+}
+
+.login-form p a:hover{
+    color: var(--first-color);
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group label{
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.login-btn{
+    font-size: 16px;
+    margin-top:5px;
+}
+
+.input-field{
+    height: 40px;
+    border: 1px solid #888888;
+    background: #ffffffce;
+    outline: none;
+    font-size: 14px;
+    border-radius: 5px;
+    padding-inline: 10px;
+    color: black;
+}
+
+.input-field:focus{
+    border: 1px solid black;
+}
+
+/* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
+@media only screen and (max-width: 1023px) {
+
+}

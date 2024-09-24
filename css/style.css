@@ -61,7 +61,7 @@ html{
 /* ------ GLOBAL SETTINGS ----- */
 .btn{
     font-weight: 500;
-    padding: 12px 20px;
+    padding: 12px 15px;
     background: var(--color-white);
     border: none;
     border-radius: 10px;
@@ -157,7 +157,6 @@ h2{
 nav{
     position: fixed;
     display: flex;
-    justify-content: space-between;
     width: 100%;
     height: 90px;
     line-height: 90px;
@@ -165,6 +164,13 @@ nav{
     padding-inline: 10vw;
     transition: .3s;
     z-index: 100;
+    justify-content: center;
+}
+
+.header-container{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .nav-logo{
@@ -176,6 +182,7 @@ nav{
 }
 
 .nav-name{
+    width: 150px;
     font-size: 32px;
     font-weight: bolder;
     text-transform: uppercase;
@@ -185,6 +192,10 @@ nav{
 .nav-logo span{
     font-size: 1.35em;
     color: var(--second-color);
+}
+
+.nav-menu .nav-button{
+   display: none;
 }
 
 .nav-menu, .nav_menu_list{
@@ -201,7 +212,7 @@ nav{
     color: var(--first-color);
     font-weight: 500;
     padding-inline: 0px;
-    margin-inline: 20px;
+    margin-inline: 10px;
     transition: transform 0.3s ease-in-out, color 0.3s ease;
 }
 
@@ -910,9 +921,6 @@ span.small-info{
 
 
 
-
-
-
 /* ----- MEDIA QUERY == +1600px / RESPONSIVE ----- */
 @media only screen and (min-width: 1600px) {
     .nav-link{
@@ -931,9 +939,9 @@ span.small-info{
     }
 }
 
-/* ----- MEDIA QUERY == 968px / RESPONSIVE ----- */
-@media only screen and (max-width: 968px) {
-    .nav-button{
+/* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
+@media only screen and (max-width: 1023px) {
+    .header-container .nav-button{ 
         display: none;
     }
     
@@ -948,12 +956,19 @@ span.small-info{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        line-height: 70px;
         background: rgba(187,187,187, 0.7);
         backdrop-filter: blur(30px);
         width: 100%;
         min-height: 450px;
         height: 90vh;
         transition: .3s;
+    }
+
+    .nav-menu .nav-button{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
     
     .nav_menu_list{
