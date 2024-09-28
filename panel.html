@@ -22,9 +22,24 @@
                         <p class="nav-name">Tá Feito<span>.</span></p>
                     </a>
                 </div>
-
-                <div class="nav-button">
-                    <a href="login.html" class="btn">Login<i class="fa fa-sign-in"></i></a>
+                <div class="nav-menu" id="myMenu">
+                    <ul class="nav_menu_list">
+                        <li class="nav_list">
+                            <a href="pedidos.html" class="nav-link">Meus Pedidos</a>
+                        </li>
+                        <li class="nav_list">
+                            <a href="novo-pedido.html" class="nav-link">Novo Pedido</a>
+                        </li>
+                        <li class="nav_list">
+                            <a href="profile.html" class="nav-link">Perfil Usuário</a>
+                        </li>
+                        <li class="nav_list">
+                            <a href="sair.html" class="nav-link">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-menu-btn"></div>
+                    <i class="fa-solid fa-bars" id="mobile-menu" onclick="menuFunction()"></i>
                 </div>
             </div>
         </nav>
@@ -34,12 +49,12 @@
             <!-- LOGIN FORM -->
             <div class="form-container">
                 <div class="alerts">
-                    <span class="ok">Cadastro realizado com sucesso.</span>
-                    <span class="error">Preencha os campos corretamente e tente novamente.</span>
+                    <span class="ok">Dados atualizados com sucesso.</span>
+                    <span class="error">Preencha todos os campos e tente novamente.</span>
                 </div>
                 <form action="" class="login-form">
                     <fieldset>
-                        <legend>Cadastro</legend>
+                        <legend>Perfil do Usuário</legend>
                         <div class="form-group">
                             <label for="nome">Nome</label>
                             <input type="text" id="nome" class="input-field" required>
@@ -69,9 +84,8 @@
                             <input type="number" id="nif" placeholder="000000000" class="input-field" required>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn2 login-btn" value="Criar Conta">
+                            <input type="submit" class="btn2 login-btn" value="Atualizar Dados">
                         </div>
-                        <p>Já possui conta?  <a href="login.html">Fazer login</a></p>
                     </fieldset>
                 </form>
             </div>

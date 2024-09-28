@@ -72,15 +72,6 @@ fieldset{
     position: relative;
 }
 
-.main-container{
-    max-width: 1000px;
-    margin:0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 
 /* ------ REUSABLES COMPONENTS ----- */
 .btn{
@@ -105,28 +96,36 @@ fieldset{
     color: var(--color-white);
 }
 
-.ok{
-    border: 1px solid green;
-    background: rgba(0, 128, 0, 0.2);
-    color: green;
+.alerts{
+    display: flex;
+    flex-direction: column;
+    border: 0px solid;
+    height: 57px;
+    width: 100%;
+    justify-content: end;
+}
+
+.ok, .error{
     font-weight: 500;
     border-radius: 10px;
     padding: 10px 30px;
     text-align: center;
-    margin-block:20px;
     font-size: 14px;
+    width: 100%;
+    display: none;
+}
+
+.ok{
+    border: 1px solid green;
+    background: rgba(0, 128, 0, 0.2);
+    color: green;
+    display: block;
 }
 
 .error{
     border: 1px solid rgb(202, 3, 3);
     background: rgba(255, 0, 0, 0.2);
     color: rgb(202, 3, 3);
-    font-weight: 500;
-    border-radius: 10px;
-    padding: 10px 30px;
-    text-align: center;
-    margin-block:20px;
-    font-size: 14px;
 }
 
 .btn:hover, .btn2:hover{
@@ -179,15 +178,66 @@ nav{
     color: var(--color-white);
 }
 
+.nav-button a{
+    text-decoration: none;
+}
+
+.nav-menu, .nav_menu_list{
+    display: flex;
+}
+
+.nav-menu .nav_list{
+    list-style: none;
+    position: relative;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: var(--color-white);
+    font-weight: 500;
+    padding-inline: 0px;
+    margin-inline: 25px;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
+}
+
+.nav-link:hover{
+    color: var(--second-color);
+}
+
+.nav-menu-btn{
+    display: none;
+    color: var(--color-white);
+}
+
+.nav-menu-btn i{
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
+}
+
+#mobile-menu.fa-xmark{
+    transform: rotate(180deg);
+}
+
 /* ------ LOGIN FORM ----- */
-.login-form{
+.form-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
     max-width: 400px;
-    min-height: 400px;
+}
+
+.login-form{
     background: var(--color-white);
     box-shadow: 1px 5px 8px 2px var(--first-shadow-color);
     border-radius: 10px;
-    padding: 20px;
-    margin-top: 10vh;
+    padding: 20px 40px;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    width: 100%;
 }
 
 .login-form fieldset{
@@ -198,9 +248,9 @@ nav{
 
 .login-form legend{
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
-    padding-block: 15px;
+    margin-bottom: 10px;
 }
 
 .login-form p, a{
@@ -232,7 +282,7 @@ nav{
 
 .input-field{
     height: 40px;
-    border: 1px solid #888888;
+    border: 1px solid #a1a0a0;
     background: #ffffffce;
     outline: none;
     font-size: 14px;
@@ -247,5 +297,39 @@ nav{
 
 /* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
 @media only screen and (max-width: 1023px) {
+    .nav-menu.responsive{
+        left: 0;
+    }
+    
+    .nav-menu{
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        line-height: 70px;
+        background: rgba(187,187,187, 0.7);
+        backdrop-filter: blur(30px);
+        width: 100%;
+        min-height: 450px;
+        height: 90vh;
+        transition: .3s;
+    }
 
+    .nav-menu .nav-button{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav_menu_list{
+        flex-direction: column;
+    }
+    
+    .nav-menu-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
