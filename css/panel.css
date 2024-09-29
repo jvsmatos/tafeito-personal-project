@@ -128,6 +128,26 @@ fieldset{
     color: rgb(202, 3, 3);
 }
 
+.waiting{
+    background: var(--second-color);
+    color: white;
+}
+
+.rejected{
+    background: red;
+    color: white;
+}
+
+.aproved{
+    background: green;
+    color: white;
+}
+
+.canceled{
+    background: #636363;
+    color: white;
+}
+
 .btn:hover, .btn2:hover{
     color: var(--first-color);
     background: var(--second-color);
@@ -184,6 +204,8 @@ nav{
 
 .nav-menu, .nav_menu_list{
     display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .nav-menu .nav_list{
@@ -295,6 +317,62 @@ nav{
     border: 1px solid black;
 }
 
+/* ------ PEDIDOS ----- */
+.orders-container{
+    padding: 30px;
+    margin-block:2vh;
+    width: 100%;
+}
+
+.orders-list{
+    list-style: none;
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    gap:15px;
+}
+
+.orders-list li{
+    background: var(--color-white);
+    box-shadow: 1px 5px 8px 2px var(--first-shadow-color);
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 400px;
+}
+
+.orders-list li .extended{
+    
+}
+
+.orders-list li a{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.order-id{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status{
+    padding: 3px 10px;
+    font-size: 13px;
+    border-radius: 15px;
+}
+
+.order-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: justify;
+    font-size: 12px;
+    gap:10px;
+    font-weight: 400;
+}
+
 /* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
 @media only screen and (max-width: 1023px) {
     .nav-menu.responsive{
@@ -325,11 +403,23 @@ nav{
     
     .nav_menu_list{
         flex-direction: column;
+        align-items: center;
     }
     
     .nav-menu-btn{
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .nav-link{
+        text-decoration: none;
+        color: var(--first-color);
+        font-size: 18px;
+        transition: transform 0.3s ease-in-out, color 0.3s ease;
+    }
+
+    .nav-link:hover{
+        color: white;
     }
 }

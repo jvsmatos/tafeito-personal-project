@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TáFeito - Nunca foi tão fácil conseguir bons profissionais!</title>
+
+    <link rel="stylesheet" href="css/panel.css">
+    <script src="https://kit.fontawesome.com/3c8c59d717.js" crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" href="images/TF.png" type="image/x-icon"> 
+
+</head>
+<body>
+    
+    <div class="container">
+    <!-- HEADER -->
+        <nav id="header">
+            <div class="header-container">
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <p class="nav-name">Tá Feito<span>.</span></p>
+                    </a>
+                </div>
+                <div class="nav-menu" id="myMenu">
+                    <ul class="nav_menu_list">
+                        <li class="nav_list">
+                            <a href="pedidos.html" class="nav-link">Meus Pedidos</a>
+                        </li>
+                        <li class="nav_list">
+                            <a href="novo-pedido.html" class="nav-link">Novo Pedido</a>
+                        </li>
+                        <li class="nav_list">
+                            <a href="profile.html" class="nav-link">Perfil Usuário</a>
+                        </li>
+                        <li class="nav_list">
+                            <a href="sair.html" class="nav-link">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-menu-btn">
+                    <i class="fa-solid fa-bars" id="mobile-menu" onclick="menuFunction()"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- MAIN -->
+        <main class="wrapper">
+            <!-- PEDIDOS -->
+            <div class="orders-container">
+                <ul class="orders-list extended">
+                    <li>
+                        <a href="pedido.html">
+                            <div class="order-id">
+                                <span><strong>Pedido: 0001</strong></span>
+                                <span class="status aproved">Aprovado</span>
+                            </div>
+                            <div class="order-info">
+                                <p>Criado em 29/09/2024</p>
+                                <p>Gostaria de um orçamento para a pintura do meu apartamento de 70m². Quero pintar todas as paredes internas, mantendo o teto branco e aplicando uma cor mais clara nas paredes da sala e dos quartos. Além disso, gostaria que fosse utilizado um material resistente e lavável, pois tenho crianças pequenas. A pintura atual está em bom estado, então acredito que uma demão seja suficiente. Qual seria o valor e o tempo estimado para concluir o serviço?</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <!-- MAIN JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
