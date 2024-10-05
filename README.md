@@ -12,18 +12,18 @@ MAIN PAGE
 8. Footer :white_check_mark:
 
 USER PAGE (client/professionals/admin)
-1. LOGIN/REGISTRATION/RECOVER PAGE :hourglass:
+1. LOGIN/REGISTRATION/RECOVER PAGE :white_check_mark:
 2. CLIENT PAGE: 
-   - PROFILE PAGE
-   - NEW ORDER PAGE
-   - ORDER LIST PAGE
-   - ORDER INDIVIDUAL PAGE
+   - PROFILE PAGE :white_check_mark:
+   - NEW ORDER PAGE :white_check_mark:
+   - ORDER LIST PAGE :white_check_mark:
+   - ORDER INDIVIDUAL PAGE :white_check_mark:
      - ACCEPTING ONE OFFER AND SENDING EMAIL TO PROFESSIONAL
      - REJECTING ALL ORDERS AND THANKING EVERYONE
 3. PROFESSIONAL PAGE:
-   - PROFILE PAGE
-   - AVAILABLE ORDERS LIST
-   - ORDER INDIVIDUAL PAGE
+   - PROFILE PAGE :white_check_mark:
+   - AVAILABLE ORDERS LIST :white_check_mark:
+   - ORDER INDIVIDUAL PAGE :hourglass:
      - SEND A PRICE FOR THE ORDER
 
 ---
