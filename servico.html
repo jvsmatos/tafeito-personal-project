@@ -51,32 +51,32 @@
                 <ul class="orders-list">
                     <li>
                         <div class="order-id">
-                            <span><strong>Pedido: 0001</strong></span>
-                            <span class="status aproved">Aprovado</span>
+                            <span><strong>Serviço: 0001</strong></span>
+                            <span class="status waiting">Aguardando propostas</span>
                         </div>
                         <div class="order-info">
-                            <p>Criado em 29/09/2024</p>
+                            <p>Expira em 29/09/2024</p>
                             <p>5 propostas</p>
                             <p>Gostaria de um orçamento para a pintura do meu apartamento de 70m². Quero pintar todas as paredes internas, mantendo o teto branco e aplicando uma cor mais clara nas paredes da sala e dos quartos. Além disso, gostaria que fosse utilizado um material resistente e lavável, pois tenho crianças pequenas. A pintura atual está em bom estado, então acredito que uma demão seja suficiente. Qual seria o valor e o tempo estimado para concluir o serviço?</p>
                             <p><strong>Valor estimado: 2000 a 3000 euros</strong></p>
-                            <span>* Ao aceitar qualquer uma das propostas automaticamente as demais serão rejeitadas.</span>
+                            <span>* Caso o cliente aceite ou recuse a sua proposta, ou mesmo cancele o pedido você será notificado por e-mail.</span>
                         </div>
                     </li>
                 </ul>
 
                 <ul class="proposals-list">
-                    <p>Propostas</p>
+                    <p>Proposta</p>
                     <li>
                         <div class="company-info">
                             <p>Empresa: <strong>Pinturas & Cia Lda</strong></p>
                             <p>NIF: 999999999</p>
-                            <p>Responsável: José Ademir</p>
                             <p>Data: 29/09/2024</p>
-                            <span class="canceled">01</span><br>
+                            <br>
                             <p><strong>Informações extras:</strong> Já realizei trabalhos semelhantes à vossa solicitação e portanto posso tranquilamente resolver o vosso pedido com a garantia de um serviço de qualidade. Tenho equipa e disponibilidade imediata para começar os trabalhos.</p>
                         </div>
                         <div class="proposal-info">
-                            <p>Valor proposto: <strong>2789,35 euros + IVA</strong></p>
+                            <p>Valor proposto: <strong>2789,35 euros + IVA</strong>
+                            <br>Valor aceite: <strong>3068,28 euros + IVA</strong> <i class="fa-solid fa-circle-check fa-lg" style="color: green"></i></i></p>
                             <div class="proposal-options">
                                 <button class="btn2">Aceitar proposta</button>
                                 <button class="btn">Recusar proposta</button>
@@ -84,38 +84,15 @@
                         </div>
                     </li>
                     <li>
-                        <div class="company-info">
-                            <p>Empresa: <strong>Pinturas & Cia Lda</strong></p>
-                            <p>NIF: 999999999</p>
-                            <p>Responsável: José Ademir</p>
-                            <p>Data: 29/09/2024</p>
-                            <span class="canceled">02</span><br>
-                            <p><strong>Informações extras:</strong> Já realizei trabalhos semelhantes à vossa solicitação e portanto posso tranquilamente resolver o vosso pedido com a garantia de um serviço de qualidade. Tenho equipa e disponibilidade imediata para começar os trabalhos.</p>
-                        </div>
-                        <div class="proposal-info">
-                            <p>Valor proposto: <strong>2789,35 euros + IVA</strong></p>
-                            <div class="proposal-options">
-                                <button class="btn2">Aceitar proposta</button>
-                                <button class="btn">Recusar proposta</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="company-info">
-                            <p>Empresa: <strong>Pinturas & Cia Lda</strong></p>
-                            <p>NIF: 999999999</p>
-                            <p>Responsável: José Ademir</p>
-                            <p>Data: 29/09/2024</p>
-                            <span class="canceled">03</span><br>
-                            <p><strong>Informações extras:</strong> Já realizei trabalhos semelhantes à vossa solicitação e portanto posso tranquilamente resolver o vosso pedido com a garantia de um serviço de qualidade. Tenho equipa e disponibilidade imediata para começar os trabalhos.</p>
-                        </div>
-                        <div class="proposal-info">
-                            <p>Valor proposto: <strong>2789,35 euros + IVA</strong></p>
-                            <div class="proposal-options">
-                                <button class="btn2">Aceitar proposta</button>
-                                <button class="btn">Recusar proposta</button>
-                            </div>
-                        </div>
+                        <form action="" class="send-proposal">
+                            <label for="proposta">Se tiver interesse neste serviço, apresente a sua proposta o quanto antes!</label>
+                            <textarea name="proposta" rows="5" id="proposta" placeholder="Aproveite este espaço para melhor apresentar a si ou a sua empresa ao cliente que vai receber a sua proposta."></textarea>
+                            <br>
+                            <label for="valor">Valor da sua proposta:</label>
+                            <input type="text" onchange="numeroParaEuro()" id="valor" class="input-field">
+                            <br>
+                            <input type="submit" class="btn2" value="Enviar proposta">
+                        </form>
                     </li>
                 </ul>
             </div>

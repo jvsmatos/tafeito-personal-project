@@ -1,0 +1,153 @@
+/* ------ SIMULATION SECTION ----- */
+.orcamento-box{
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-control{
+    background: var(--second-color);
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    gap:5px;
+}
+
+.form-control legend{
+    font-weight: 600;
+}
+
+.form-control > span{
+    font-size: 12px;
+    color: #5f5f5fe0;
+}
+
+.form-control .form-client{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
+
+.form-control .form-group{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.form-control .form-group-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control .form-group > label{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-control .form-services{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control .input-field{
+    height: 30px;
+    border: 2px solid #585858;
+    background: #ffffffce;
+    outline: none;
+    font-size: 14px;
+    border-radius: 5px;
+    padding-inline: 10px;
+    color: black;
+}
+
+.form-control .input-check{
+    height: 30px;
+    margin-left: 10px;
+}
+
+.form-control .option-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+    margin:10px 0;
+    display: none;
+}
+
+.form-control .option-list-col{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+}
+
+.form-control .total{
+    color: var(--first-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top:20px;
+    display: none;
+}
+
+.form-control span.small-info{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+#total{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left:10px;
+}
+
+.form-control .button{
+    display: flex;
+    gap: 40px;
+    margin-top:20px;
+    justify-content: center;
+}
+
+.form-control .form-group textarea{
+    border: 2px solid #585858;
+    background: #ffffffce;
+    outline: none;
+    font-size: 13px;
+    border-radius: 5px;
+    padding-inline: 10px;
+    color: black;
+}
+
+.form-control .botaoPedido{
+    padding: 15px;
+    font-size: 14px;
+    background: var(--first-color);
+    border-radius: 5px;
+    color: var(--color-white);
+    font-weight: 500;
+    outline: none;
+    border: 0;
+    min-width: 270px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease; 
+}
+
+.form-control .botaoPedido:hover{
+    background: var(--fith-color);
+    color: var(--first-color);
+    cursor: pointer;
+}
+
+.form-control .botaoPedido>i{
+    margin-left:10px;
+}
+
+.ok{
+    border: 2px solid rgb(2, 175, 25) !important; 
+}
+
+.error{
+    border: 2px solid rgb(199, 3, 3) !important;
+}

@@ -74,9 +74,13 @@ fieldset{
 
 
 /* ------ REUSABLES COMPONENTS ----- */
+.w100{
+    width: 100% !important;
+}
+
 .btn{
     font-weight: 500;
-    padding: 12px 15px;
+    padding: 10px 12px;
     background: var(--color-white);
     border: none;
     border-radius: 10px;
@@ -87,7 +91,7 @@ fieldset{
 
 .btn2{
     font-weight: 500;
-    padding: 12px 15px;
+    padding: 10px 12px;
     background: var(--first-color);
     border: none;
     border-radius: 10px;
@@ -105,7 +109,7 @@ fieldset{
     justify-content: end;
 }
 
-.ok, .error{
+.valid, .notvalid{
     font-weight: 500;
     border-radius: 10px;
     padding: 10px 30px;
@@ -115,14 +119,14 @@ fieldset{
     display: none;
 }
 
-.ok{
+.valid{
     border: 1px solid green;
     background: rgba(0, 128, 0, 0.2);
     color: green;
     display: block;
 }
 
-.error{
+.notvalid{
     border: 1px solid rgb(202, 3, 3);
     background: rgba(255, 0, 0, 0.2);
     color: rgb(202, 3, 3);
@@ -130,6 +134,11 @@ fieldset{
 
 .waiting{
     background: var(--second-color);
+    color: white;
+}
+
+.sent{
+    background: blue;
     color: white;
 }
 
@@ -320,8 +329,10 @@ nav{
 /* ------ PEDIDOS ----- */
 .orders-container{
     padding: 30px;
-    margin-block:2vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .orders-list{
@@ -337,11 +348,6 @@ nav{
     box-shadow: 1px 5px 8px 2px var(--first-shadow-color);
     border-radius: 10px;
     padding: 15px;
-    max-width: 400px;
-}
-
-.orders-list li .extended{
-    
 }
 
 .orders-list li a{
@@ -349,6 +355,10 @@ nav{
     color: black;
     font-size: 14px;
     font-weight: 500;
+}
+
+.orders-list li a:hover .order-num{
+    font-weight: 600;
 }
 
 .order-id{
@@ -371,6 +381,73 @@ nav{
     font-size: 12px;
     gap:10px;
     font-weight: 400;
+}
+
+.proposals-list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-block: 20px;
+    align-self: center;
+}
+
+.proposals-list li{
+    background: rgb(179, 179, 179);
+    box-shadow: 1px 5px 8px 2px var(--first-shadow-color);
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.company-info span{
+    padding: 3px 7px;
+    font-size: 13px;
+    border-radius: 20px;
+    position:relative;
+    top:-80px;
+    float: right;
+}
+
+.proposal-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap:10px;
+}
+
+.proposal-options{
+    display: flex;
+    gap:15px;
+}
+
+.proposal-options button{
+    font-size: 12px;
+}
+
+.send-proposal{
+    display: flex;
+    flex-direction: column;
+}
+
+.send-proposal input[type="submit"]{
+    width: auto;
+    padding-inline: 20px;
+    margin: 0 auto;
+}
+
+.send-proposal textarea{
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.send-proposal input[type="text"]{
+    width: 160px;
+    height: 35px;
+    padding-inline: 5px;
+    border-radius: 5px;
+    outline: none;
 }
 
 /* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
