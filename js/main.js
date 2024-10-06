@@ -223,14 +223,45 @@
         });
     }
 
-/* ------- NUMERO PARA EURO -------*/
-    function numeroParaEuro() {
-        let numero = parseFloat(document.getElementById("valor").value);
+/* ------- FORMATAR MOEDA -------*/
+    function formatarMoeda() {
+        var elemento = document.getElementById('valor');
+        var valor = elemento.value;
         
-        if (!isNaN(numero)) { // Verifica se é um número válido
-            let valorFormatado = numero.toFixed(2).replace('.', ',');
-            document.getElementById("valor").value = valorFormatado; // Atualiza o campo com o valor formatado
-        } else {
-            alert("Por favor, insira um valor numérico válido.");
+        // Remove o símbolo de € se já estiver presente
+        valor = valor.replace('€', '').trim();
+        
+        // Remove qualquer outro caractere que não seja número ou vírgula/ponto
+        valor = valor.replace(/[\D]+/g, '');
+    
+        if (isNaN(valor) || valor === '') {
+        return;  // Sai da função se o valor não for um número válido
+        }
+        
+        valor = valor + '';
+        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+    
+        if (valor.length > 6) {
+        valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+        }
+        
+        elemento.value = valor;
+    }
+    
+    // Adiciona o símbolo de € ao perder o foco
+    function adicionarSimbolo() {
+        var elemento = document.getElementById('valor');
+        var valor = elemento.value;
+    
+        if (valor !== '') {
+        // Acrescenta o símbolo de € apenas se houver um valor
+        elemento.value = valor + ' €';
         }
     }
+    
+    // Remove o símbolo de € ao focar no campo, para evitar problemas de edição
+    function removerSimbolo() {
+        var elemento = document.getElementById('valor');
+        elemento.value = elemento.value.replace('€', '').trim();
+    }
+  
