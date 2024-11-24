@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link rel="shortcut icon" href="images/TF.png" type="image/x-icon"> 
 
@@ -23,7 +24,7 @@
         <nav id="header">
             <div class="header-container">
                 <div class="nav-logo">
-                    <a href="#">
+                    <a href="index.php">
                         <p class="nav-name">Tá Feito<span>.</span></p>
                     </a>
                 </div>
@@ -47,14 +48,14 @@
                     </ul>
 
                     <div class="nav-button">
-                        <button class="btn">Login<i class="fa fa-sign-in"></i></button>
-                        <button class="btn">Cadastro<i class="fa-solid fa-user-plus"></i></button>
+                        <a href="login.php"><button class="btn">Login<i class="fa fa-sign-in"></i></button></a>
+                        <a href="cadastro.php"><button class="btn">Cadastro<i class="fa-solid fa-user-plus"></i></button></a>
                     </div>
                 </div>
 
                 <div class="nav-button">
-                    <button class="btn">Login<i class="fa fa-sign-in"></i></button>
-                    <button class="btn">Cadastro<i class="fa-solid fa-user-plus"></i></button>
+                    <a href="login.php"><button class="btn">Login<i class="fa fa-sign-in"></i></button></a>
+                    <a href="cadastro.php"><button class="btn">Cadastro<i class="fa-solid fa-user-plus"></i></button></a>
                 </div>
 
                 <div class="nav-menu-btn">
@@ -85,7 +86,7 @@
                             </p>
                         </div>
                         <div class="featured-text-btn">
-                            <button class="btn">Peça um orçamento <i class="fa-solid fa-paint-roller"></i></button>
+                            <a href="#orcamento"><button class="btn">Peça um orçamento <i class="fa-solid fa-paint-roller"></i></button></a>
                         </div>
                     </div>
                     <div class="featured-slide">
@@ -179,34 +180,33 @@
                             <span>* Durante 7 dias a sua solicitação estará disponível para que os profissionais confirmem os valores ou peçam mais informações.</span>
                             <span>** Os valores são considerados, por default, com uso do alpinismo para execução dos trabalhos.</span>
                             <span>*** Para estas simulações todos os materiais necessários já estão inclusos nos valores apresentados.</span>
-                            <fieldset>
-                                <legend>Dados do cliente:</legend>
-                                <div class="form-client">
-                                    <div class="form-group">
-                                        <label for="nome">Nome</label>
-                                        <input type="text" id="nome" class="input-field" placeholder="John" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="apelido">Apelido</label>
-                                        <input type="text" id="apelido" class="input-field" placeholder="Doe" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="telemovel">Telemóvel</label>
-                                        <input type="tel" id="telemovel"  class="input-field" maxlength="9" placeholder="999999999" required>
-                                    </div>
-                                </div>
-                            </fieldset>
                             
                             <fieldset>
                                 <legend>Informações do serviço:</legend>
                                 <div class="form-services">
                                     <div class="form-group">
                                         <label for="servico">Serviço</label>
-                                        <select name="servico" id="servico" class="input-field">
-                                            <option value="">Selecione o serviço</option>
-                                            <option value="pintura-interna">Pintura Interna</option>
-                                            <option value="pintura-externa">Pintura Externa</option>
-                                            <option value="pequenos-retoques">Pequenos Retoques</option>
+                                        <select name="servico" id="servico" class="input-field" required>
+                                            <?php
+                                            require_once 'conexao.php';
+                                            $query = "SELECT * FROM servicos ORDER BY nome ASC";
+                                            
+                                            $servicos = [];
+                                            
+                                            $result = mysqli_query($conn, $query);
+                                            if(mysqli_num_rows($result)>0){
+                                                while($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                                                    $servicos[] = $linha;
+                                                }
+
+                                                echo '<option value="">Selecione o serviço</option>';
+                                                foreach($servicos as $servico){
+                                                echo '<option value="'.$servico['tag'].'">'.$servico['nome'].'</option>';
+                                                }
+                                            }else{
+                                                echo '<option value="">Nenhum serviço encontrado</option>';
+                                            }     
+                                            ?>   
                                         </select>
                                     </div>
                                     
@@ -288,13 +288,12 @@
                                             <label for="andaimes">Serviço em andaimes?</label>
                                             <input type="checkbox" id="andaimes" class="input-check">
                                         </div>
-
                                     </div>                                        
                                 </div>
                             </fieldset>
                             <div class="total">Valor Estimado <span class="small-info">(S/ IVA):</span> <span id="total"> €0.00 - €0.00</span></div>
                             <div class="button">
-                                <button type="button" id="botaoPedido" class="botaoPedido" onclick="createOrder()">Encontre um profissional <i class="fa-solid fa-brush"></i></button>
+                                <a href="cadastro.php" id="botaoPedido" class="botaoPedido" onclick="createOrder()">Encontre um profissional <i class="fa-solid fa-brush"></i></a>
                             </div>     
                         </form>
                     </div>
@@ -427,7 +426,7 @@
             <div class="footer-box">
                 <div class="footer-group">
                     <div class="footer-logo">
-                        <a href="#">
+                        <a href="index.php">
                             <p class="name">Tá Feito<span>.</span></p>
                         </a>
                         <div class="footer-options">
@@ -464,9 +463,6 @@
         </footer>
     </div>
 
-
-
-
     <!-- TYPED JS -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
@@ -474,7 +470,9 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <!-- MAIN JS -->
-    <script src="js/script.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
+
+    
 </body>
 </html>

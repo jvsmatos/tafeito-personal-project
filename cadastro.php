@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(isset($_SESSION['id'])){
+    header("Location: profile.php");
+    exit();
+}else{
+    // Adicionar verificação de tempo de expiração da sessão
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +27,12 @@
         <nav id="header">
             <div class="header-container">
                 <div class="nav-logo">
-                    <a href="index.html">
+                    <a href="index.php">
                         <p class="nav-name">Tá Feito<span>.</span></p>
                     </a>
                 </div>
-
                 <div class="nav-button">
-                    <a href="login.html" class="btn">Login<i class="fa fa-sign-in"></i></a>
+                    <a href="login.php" class="btn">Login<i class="fa fa-sign-in"></i></a>
                 </div>
             </div>
         </nav>
@@ -34,44 +42,53 @@
             <!-- LOGIN FORM -->
             <div class="form-container">
                 <div class="alerts">
-                    <span class="ok">Cadastro realizado com sucesso.</span>
-                    <span class="error">Preencha os campos corretamente e tente novamente.</span>
+                <?php
+                    //Se o "alert" não estiver vazio
+                    if(!empty($_SESSION['alert'])){
+                        //Exibe o alert com a classe e msg correspondente
+                        echo '<span id="alerta" class="' . htmlspecialchars($_SESSION['alert']) . '">' . htmlspecialchars($_SESSION['msg']) . '</span>';
+                        unset($_SESSION['alert']);
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
                 </div>
-                <form action="" class="login-form">
+                <form action="auth.php" method="POST" class="login-form">
                     <fieldset>
                         <legend>Cadastro</legend>
                         <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" class="input-field" required>
-                        </div>
-                        <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input type="text" id="email" placeholder="email@email.com" class="input-field" required>
+                            <input type="text" name="email" id="email" placeholder="email@email.com" class="input-field" required>
                         </div>
                         <div class="form-group">
                             <label for="pass">Senha</label>
-                            <input type="password" id="pass" placeholder="********" class="input-field" required>
+                            <input type="password" name="pass" id="pass" placeholder="********" class="input-field" required>
                         </div>
                         <div class="form-group">
                             <label for="pass2">Repetir Senha</label>
-                            <input type="password" id="pass2" placeholder="********" class="input-field" required>
+                            <input type="password" name="pass2" id="pass2" placeholder="********" class="input-field" required>
                         </div>
                         <div class="form-group">
                             <label for="tipo">Tipo</label>
-                            <select name="" class="input-field" id="tipo">
+                            <select name="tipo" class="input-field" id="tipo" required>
                                 <option value=""></option>
                                 <option value="cliente">Cliente</option>
-                                <option value="profissional">Profissional</option>
+                                <option value="profissional">Profissional Independente</option>
+                                <option value="empresa">Empresa</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="nif">NIF</label>
-                            <input type="number" id="nif" placeholder="000000000" class="input-field" required>
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" id="nome" placeholder="Nome e Apelido ou Nome da Empresa" class="input-field" required>
                         </div>
                         <div class="form-group">
+                            <label for="nif">NIF</label>
+                            <input type="number" id="nif" name="nif" max="999999999" placeholder="000000000" class="input-field" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="action" value="cadastro">
                             <input type="submit" class="btn2 login-btn" value="Criar Conta">
                         </div>
-                        <p>Já possui conta?  <a href="login.html">Fazer login</a></p>
+                        <p>Já possui conta?  <a href="login.php">Fazer login</a></p>
                     </fieldset>
                 </form>
             </div>
@@ -80,5 +97,8 @@
 
     <!-- MAIN JS -->
     <script src="js/main.js"></script>
+    <script>
+        fadeOutAlert();
+    </script>
 </body>
 </html>

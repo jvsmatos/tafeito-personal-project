@@ -40,10 +40,58 @@
 
 /* ----- PRICE SIMULATOR ----- */
     // Valores mínimos e máximos para cálculo
-    const valoresServicos = {
-        'pintura-interna':      { valorMinimo: 9, valorMaximo: 13, valorMinimoServico: 150 },
-        'pintura-externa':      { valorMinimo: 12, valorMaximo: 18, valorMinimoServico: 250 },
-        'pequenos-retoques':    { valorMinimo: 13, valorMaximo: 16, valorMinimoServico: 100 }
+    /* const valoresServicos = {
+        'pintura-interna':      { valorMinimo: 9, valorMaximo: 13, valorMinimoServico: 250 },
+        'pintura-externa':      { valorMinimo: 12, valorMaximo: 18, valorMinimoServico: 350 },
+        'pequenos-retoques':    { valorMinimo: 13, valorMaximo: 16, valorMinimoServico: 175 }
+    }; */
+
+    let valoresServicos = {}; // Inicializa como vazio
+
+    // Função para carregar os serviços dinamicamente via AJAX
+    function carregarValoresServicos() {
+        return $.ajax({
+            url: 'api.php', 
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                //console.log('Dados carregados:', data);
+                valoresServicos = data;
+            },
+            error: function(xhr, status, error) {
+                console.error('Erro ao carregar os dados:', error);
+                console.error('Status:', status);
+                console.error('Resposta do servidor:', xhr.responseText);
+            }
+        });
+    }
+
+    carregarValoresServicos().then(function() {
+        //console.log('Valores dos serviços:', valoresServicos);
+    
+    }).catch(function(error) {
+        //console.error('Erro ao carregar os dados:', error);
+    });
+
+
+    //Maping dos selects
+    const estadoMap = {
+        'pintura': 1.0,
+        'manchas': 1.3,
+        'ceramica': 1.5,
+        'semrevestimento': 1.22
+    };
+    
+    const acabamentoMap = {
+        'simples': 1.0,
+        'texturizado': 1.3,
+        'premium': 1.65
+    };
+    
+    const inicioMap = {
+        'ate5dias': 1.35,
+        'ate3semanas': 1.18,
+        'ate3meses': 1.08
     };
 
     // Preços fixos para serviços adicionais
@@ -76,9 +124,9 @@
     // Função para calcular o total estimado
     function calcularTotal() {
         const area              = parseFloat(areaField.value) || 0;
-        const estadoValue       = parseFloat(estadoField.value) || 1;
-        const acabamentoValue   = parseFloat(acabamentoField.value) || 1;
-        const inicioValue       = parseFloat(inicioField.value) || 1;
+        const estadoValue       = parseFloat(estadoMap[estadoField.value]) || 1;
+        const acabamentoValue   = acabamentoMap[acabamentoField.value] || 1;
+        const inicioValue       = inicioMap[inicioField.value] || 1;
 
         // Identificar o tipo de serviço selecionado
         const tipoServico   = servicoField.value;
@@ -228,40 +276,121 @@
         var elemento = document.getElementById('valor');
         var valor = elemento.value;
         
-        // Remove o símbolo de € se já estiver presente
-        valor = valor.replace('€', '').trim();
-        
         // Remove qualquer outro caractere que não seja número ou vírgula/ponto
         valor = valor.replace(/[\D]+/g, '');
     
         if (isNaN(valor) || valor === '') {
-        return;  // Sai da função se o valor não for um número válido
+            return;  // Sai da função se o valor não for um número válido
         }
         
-        valor = valor + '';
-        valor = valor.replace(/([0-9]{2})$/g, ",$1");
+        // Separa os últimos dois dígitos com um ponto (para os centavos)
+        valor = valor.replace(/([0-9]{2})$/, ".$1");
+
+        // Remove pontos extras que são usados como separadores de milhar
+        valor = valor.replace(/\./g, '');
     
-        if (valor.length > 6) {
-        valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-        }
+        // Coloca o ponto como separador decimal
+        valor = valor.replace(/([0-9]{2})$/, ".$1");
         
         elemento.value = valor;
     }
-    
-    // Adiciona o símbolo de € ao perder o foco
-    function adicionarSimbolo() {
-        var elemento = document.getElementById('valor');
-        var valor = elemento.value;
-    
-        if (valor !== '') {
-        // Acrescenta o símbolo de € apenas se houver um valor
-        elemento.value = valor + ' €';
+
+/* ------- FUNÇÕES INTERNAS ------ */
+    // Passar o valor simulado como input no form
+    function passValue(){
+        var totalValue = document.getElementById('total').innerText;
+        document.getElementById('totalValue').value = totalValue;
+        console.log(totalValue);
+    };
+
+    // Retorno da aceitação de proposta pelo cliente
+    function acceptProposal(element) {
+        var proposalId  = $(element).attr('proposal-id');
+        var orderId     = $(element).attr('order-id');
+
+        $.ajax({
+            url: 'auth2.php', // Arquivo PHP onde a função será executada
+            type: 'POST',
+            data: { action: 'accept', proposal_id: proposalId, order_id: orderId },
+            success: function(response) {
+                location.reload();
+            }
+        });
+
+        //console.log("Proposta aceita com ID " + proposalId + " e Pedido com ID " + orderId);
+    };
+
+    // Retorno da rejeição de proposta pelo cliente
+    function rejectProposal(element) {
+        var proposalId  = $(element).attr('proposal-id');
+        
+        $.ajax({
+            url: 'auth2.php', // Arquivo PHP onde a função será executada
+            type: 'POST',
+            data: { action: 'reject', proposal_id: proposalId },
+            success: function(response) {
+                location.reload();
+            }
+        });
+
+        //console.log("Proposta aceita com ID " + proposalId);
+    };
+
+    // Retorno do cancelamento de pedido pelo cliente
+    function cancelOrder(element) {
+        var orderId  = $(element).attr('order-id');
+        
+        $.ajax({
+            url: 'auth2.php', // Arquivo PHP onde a função será executada
+            type: 'POST',
+            data: { action: 'cancel', order_id: orderId },
+            success: function(response) {
+                location.reload();
+            }
+        });
+
+        //console.log("Proposta aceita com ID " + proposalId);
+    };
+
+    // Retorno da remoção de usuário pelo adm
+    function deleteUser(element) {
+        var userId  = $(element).attr('user-id');
+        
+        $.ajax({
+            url: 'auth2.php', // Arquivo PHP onde a função será executada
+            type: 'POST',
+            data: { action: 'delete', user_id: userId },
+            /* success: function(response) {
+                location.reload();
+            } */
+        });
+    };
+
+    // Retorno da remoção de usuário pelo adm
+    function deleteService(element) {
+        var serviceId  = $(element).attr('servico-id');
+        
+        $.ajax({
+            url: 'auth2.php', // Arquivo PHP onde a função será executada
+            type: 'POST',
+            data: { action: 'delete', servico_id: serviceId },
+            /* success: function(response) {
+                location.reload();
+            } */
+        });
+    };
+
+    function fadeOutAlert() {
+        const alertMessage = document.getElementById('alerta');
+        //console.log("Alerta identificado");
+        if (alertMessage) {
+            setTimeout(() => {
+                alertMessage.style.transition = "opacity 0.5s ease";
+                alertMessage.style.opacity = "0";
+                setTimeout(() => alertMessage.remove(), 500);
+                //console.log("Alerta removido");
+            }, 3500); // Tempo de exibição (3 segundos)
         }
     }
-    
-    // Remove o símbolo de € ao focar no campo, para evitar problemas de edição
-    function removerSimbolo() {
-        var elemento = document.getElementById('valor');
-        elemento.value = elemento.value.replace('€', '').trim();
-    }
+
   

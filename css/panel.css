@@ -109,7 +109,7 @@ fieldset{
     justify-content: end;
 }
 
-.valid, .notvalid{
+.valid, .notvalid, .noaccess{
     font-weight: 500;
     border-radius: 10px;
     padding: 10px 30px;
@@ -126,14 +126,22 @@ fieldset{
     display: block;
 }
 
+.noaccess{
+    border: 1px solid #024081;
+    background: #023f8134;
+    color: #024081;
+    display: block;
+}
+
 .notvalid{
     border: 1px solid rgb(202, 3, 3);
     background: rgba(255, 0, 0, 0.2);
     color: rgb(202, 3, 3);
+    display: block;
 }
 
 .waiting{
-    background: var(--second-color);
+    background: #FFC745;
     color: white;
 }
 
@@ -147,7 +155,7 @@ fieldset{
     color: white;
 }
 
-.aproved{
+.approved{
     background: green;
     color: white;
 }
@@ -192,6 +200,15 @@ nav{
 
 .nav-logo a{
     text-decoration: none;
+}
+
+.nav-logo .small-info{
+    font-size: 10px;
+    font-weight: bold;
+    position: relative;
+    color: white;
+    top: -65px;
+    left: 50px;
 }
 
 .nav-name{
@@ -326,10 +343,65 @@ nav{
     border: 1px solid black;
 }
 
+.tab {
+    width: 100%;
+}
+
+.tab .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    text-align: center;
+    list-style: none;
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0;
+}
+
+.tab .header li{
+    min-width: 100px;
+    text-align: center;
+}
+
+.tab .user-list {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+}
+
+.tab .user-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap:10px;
+    list-style: none;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tab .user-row li {
+    min-width: 100px;
+}
+
+.tab .user-row li a {
+    text-decoration: none;
+    margin-inline: 5px;
+    color: var(--first-color);
+    transition: .2s ease;
+}
+
+.tab .user-row li a:hover {
+    color: var(--second-color);
+}
+
+
+
 /* ------ PEDIDOS ----- */
 .orders-container{
+    margin: 0 auto;
     padding: 30px;
-    width: 100%;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -338,7 +410,7 @@ nav{
 .orders-list{
     list-style: none;
     display: flex;
-    justify-content:space-around;
+    flex-direction: column;
     flex-wrap: wrap;
     gap:15px;
 }
@@ -369,7 +441,7 @@ nav{
 
 .status{
     padding: 3px 10px;
-    font-size: 13px;
+    font-size: 12px;
     border-radius: 15px;
 }
 
@@ -378,8 +450,7 @@ nav{
     flex-direction: column;
     align-items: flex-start;
     text-align: justify;
-    font-size: 12px;
-    gap:10px;
+    font-size: 14px;
     font-weight: 400;
 }
 
@@ -404,7 +475,7 @@ nav{
     font-size: 13px;
     border-radius: 20px;
     position:relative;
-    top:-80px;
+    top:-65px;
     float: right;
 }
 
@@ -450,7 +521,7 @@ nav{
     border: 1px solid #636363;
 }
 
-.proposal-group input[type="text"]{
+.proposal-group input[type="number"]{
     width: 160px;
     height: 35px;
     padding-inline: 5px;
@@ -466,6 +537,34 @@ nav{
     font-size: 11px;
     font-weight: 600;
     margin-top:-10px;
+}
+
+.dashboard-container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-block:30px;
+    padding-inline: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard-box{
+    max-width: 1000px;
+    border-radius: 5px;
+    background: white;
+    padding: 30px;
+}
+
+.dashboard-box p{
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.dashboard-box ul{
+    list-style: none;
+    margin-block: 10px;
+    font-size: 16px;
 }
 
 /* ----- MEDIA QUERY == 1024px / RESPONSIVE ----- */
@@ -516,5 +615,11 @@ nav{
 
     .nav-link:hover{
         color: white;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .tabhide{
+        display: none;
     }
 }

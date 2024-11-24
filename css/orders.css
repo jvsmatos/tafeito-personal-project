@@ -1,6 +1,6 @@
 /* ------ SIMULATION SECTION ----- */
 .orcamento-box{
-    padding: 30px;
+    padding-inline: 30px;
     width: 100%;
     display: flex;
     flex-direction: column;
